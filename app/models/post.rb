@@ -18,5 +18,4 @@ class Post < ApplicationRecord
   def update_likes_counter
     post.increment!(:likes_counter)
   end
-
 end
