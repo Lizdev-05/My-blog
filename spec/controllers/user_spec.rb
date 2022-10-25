@@ -1,37 +1,25 @@
 require 'rails_helper'
 
-describe 'Users', type: :request do
-  before(:each) { get users_path }
+RSpec.describe 'Users controller', type: :request do
+  it 'renders users page' do
+    get '/users'
 
-  context 'index' do
-    it 'GET /index returns okay status' do
-      expect(response).to have_http_status(200)
-    end
+    expect(response).to have_http_status(:ok)
 
-    it 'GET /index renders correct template(index)' do
-      expect(response).to render_template(:index)
-    end
+    expect(response).to render_template(:index)
 
-    it 'GET /index include correct placeholder text' do
-      expect(response.body).to include('This is the home page')
-    end
+    expect(response.body).to include('This is the home page')
   end
-end
 
-describe 'User', type: :request do
-  before(:each) { get user_path({ id: 3 }) }
+  it 'renders a page for specific user' do
+    user = User.create(name: 'Tom', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Teacher from Mexico.',
+                       posts_counter: 0)
+    get "/users/#{user.id}"
 
-  context 'show' do
-    it 'GET /show status' do
-      expect(response).to have_http_status(200)
-    end
+    expect(response).to have_http_status(:ok)
 
-    it 'GET /show render correct template(show)' do
-      expect(response).to render_template(:show)
-    end
+    expect(response).to render_template(:show)
 
-    it 'GET /show include correct placeholder text' do
-      expect(response.body).to include('This is for the show')
-    end
+    expect(response.body).to include('This is for the show')
   end
 end
