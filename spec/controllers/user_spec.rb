@@ -18,20 +18,20 @@ describe 'Users', type: :request do
   end
 end
 
-# describe 'User', type: :request do
-#   before(:each) { get user_path({ id: 3 }) }
+describe 'User', type: :request do
+  before(:each) { get user_path({ id: 3 }) }
 
-#   context 'show' do
-#     it 'GET /show status' do
-#       expect(response).to have_http_status(200)
-#     end
+  context 'show' do
+    it 'GET /show status' do
+      expect(response).to have_http_status(200)
+    end
 
-#     it 'GET /show render correct template(show)' do
-#       expect(response).to render_template(:show)
-#     end
+    it 'GET /show render correct template(show)' do
+      expect(response).to render_template(:show)
+    end
 
-#     it 'GET /show include correct placeholder text' do
-#       expect(response.body).to include('This is for the show')
-#     end
-#   end
-# end
+    it 'GET /show include correct placeholder text' do
+      expect(response.body).to include('This is for the show')
+    end
+  end
+end
