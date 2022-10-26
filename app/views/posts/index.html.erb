@@ -1,1 +1,21 @@
-<p> This is the first post</p>
+<p> This is the list of posts</p>
+
+<span><%= @user.photo %></span>
+<span><%= @user.name %></span>
+
+<% @posts.each do |post| %>
+  <p>
+  <%= post.title %>
+</p>
+
+<p>
+<%= post.text %>
+</p>
+
+<ul>
+  <% post.comments.each do |comment| %>
+  <li> <%= comment.text %></li>
+ <% end %> 
+  </ul>
+<% end %>
+
