@@ -1,17 +1,7 @@
 <h1>List of all users</h1>
 
-<table>
-<tr>
-  <th><b>Photo</b></th>
-  <th><b>Username</b></th>
-  <th><b>No of posts</b></th>
-</tr>
+<div>
 <% @users.each do |user|%>
-<tr>
-  <td> <%= user.photo %></td>
-  <td> <%= user.name %></td>
-  <td> <%= user.posts_counter %></td>
-  <td><%= link_to 'User', user_path(user.id)%></td>
-</tr>
-<% end %>
-</table>
+  <div> <%= render 'user', user: user %></div> 
+<% end %> <br>
+</ul>
