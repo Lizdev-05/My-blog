@@ -13,4 +13,5 @@
  <span>Likes : <%= post.likes_counter %></span>
   <span>Comments : <%= post.comments_counter %></span>
 <% end %>
+<%= link_to "See all posts", user_posts_path(@user.id)%>
 
