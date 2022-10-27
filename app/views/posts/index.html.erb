@@ -5,21 +5,7 @@
 
 <% @posts.each_with_index do |post, index| %>
 <p>Post #<%= index+1 %></p>
-  <p>
-  <%= post.title %>
-</p>
-
-<p>
-<%= post.text %>
-</p>
-
-<ul>
-  <% post.return_recent_comments.each do |comment| %>
-  <li> <%= comment.text %></li>
- <% end %> 
-  </ul>
-
-<a href="/users/<%= @user.id %>/posts/<%= post.id %>"> See more</a>
+<div> <%= render 'post', post: post %></div> 
 <% end %>
 
 
