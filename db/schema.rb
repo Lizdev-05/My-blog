@@ -59,3 +59,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_20_115029) do
   add_foreign_key "likes", "users", column: "author_id"
   add_foreign_key "posts", "users", column: "author_id"
 end
+
+<li><a><img class="social-icon" src="./images/Vector4.png" alt="twitter icon"></a></li>
