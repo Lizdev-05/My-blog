@@ -15,13 +15,12 @@ class PostsController < ApplicationController
     @post.likes_counter = 0
 
     if @post.save
-        flash[:notice] = "Post was successfully created"
-        redirect_to user_post_url(@user, @post)
+      flash[:notice] = 'Post was successfully created'
+      redirect_to user_post_url(@user, @post)
     else
-        render 'new', status: :unprocessable_entity
+      render 'new', status: :unprocessable_entity
     end
-end
-
+  end
 
   def show
     @post = Post.find(params[:id])
@@ -37,7 +36,6 @@ end
   def set_user
     @user = User.find(params[:author_id])
   end
-
 
   def post_params
     params.require(:post).permit(:title, :text)
