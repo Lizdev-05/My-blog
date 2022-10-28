@@ -1,12 +1,11 @@
 <p> This is the list of posts</p>
 
-<span><%= @user.photo %></span>
-<span><%= @user.name %></span>
-
+ <%= render'users/user', user: @user %>
+ 
 <% @posts.each_with_index do |post, index| %>
 <p>Post #<%= index+1 %></p>
-<div> <%= render 'post', post: post %></div> 
+<section >
+  <ul><%= render 'posts/post', post: post %></ul>
+
+</section>
 <% end %>
-
-
-
