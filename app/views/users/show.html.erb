@@ -1,8 +1,6 @@
 <h2>Details of a selected user</h2>
 
-<span><%= @user.photo %></span>
-<span><%= @user.name %></span>
-
+ <img src=<%= @user.photo %> alt="profile picture of <%= @user.name %>" />
 <p><%= @user.bio %></p>
 
 <% @user.return_recent_posts.each_with_index do |post, index|%>

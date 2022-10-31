@@ -11,5 +11,22 @@ RSpec.describe 'Render the post show page', type: :request do
             Comment.create(content: 'This is a comment', user_id: @user.id, post_id: @first_post.id)
         end
 
-        
+        visit user_post_path(@first_post.author, @first_post)
+    end
+
+    scenario 'Displays the post title' do
+        expect(page).to have_content(@first_post.title)
+    end
+
+    scenario 'Displays the post content' do
+        expect(page).to have_content(@first_post.content)
+    end
+
+    scenario 'Displaumber of likes' do
+        expect(page).to have_content(@first_post.likes_counter)
+    end
+
+   scenario 'Displays the comments' do
+        expect(page).to have_content('Here are the comments')
+   end
     end
