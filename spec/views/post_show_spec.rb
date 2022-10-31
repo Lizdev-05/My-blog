@@ -22,7 +22,7 @@ RSpec.describe 'Render the post show page', type: :request do
         expect(page).to have_content(@first_post.content)
     end
 
-    scenario 'Displaumber of likes' do
+    scenario 'Displays number of likes' do
         expect(page).to have_content(@first_post.likes_counter)
     end
 
