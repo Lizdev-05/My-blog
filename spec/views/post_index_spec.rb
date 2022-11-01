@@ -113,10 +113,10 @@ RSpec.describe 'Posts', type: :feature do
       expect(page).to have_content(@user.name)
     end
   
-  #   it 'renders all comments of the post' do
-  #     expect(page).to have_content(@comment1.text)
-  #     expect(page).to have_content(@comment2.text)
-  #     expect(page).to have_content(@comment3.text)
-  #   end
-  # end
+    it 'renders all comments of the post' do
+      expect(page).to have_content(@comment1.text)
+      expect(page).to have_content(@comment2.text)
+      expect(page).to have_content(@comment3.text)
+    end
+  end
 end
