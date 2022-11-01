@@ -92,9 +92,9 @@ RSpec.describe 'Posts', type: :feature do
       expect(page).to have_content(@post.title)
     end
   
-  #   it "renders the post's author" do
-  #     expect(page).to have_content(@user.name)
-  #   end
+    it "renders the post's author" do
+      expect(page).to have_content(@user.name)
+    end
   
   #   it 'renders comments count of the post' do
   #     expect(page).to have_content(@post.comments_counter)
