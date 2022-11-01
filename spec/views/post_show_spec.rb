@@ -28,4 +28,8 @@ RSpec.describe 'Renders the post show page', type: :feature do
     expect(page).to have_content(@first_post.text)
   end
 
+  scenario 'displays comments' do
+    expect(page).to have_content('Hello')
+  end
+
 end
