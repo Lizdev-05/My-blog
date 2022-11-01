@@ -18,5 +18,9 @@ RSpec.describe 'renders users Show Page', type: :system, js:true do
     expect(page).to have_content('I am a software developer')
   end
 
-  
+  it 'should render user profile photo' do
+    find("img[src='https://unsplash.com/photos/F_-0BxGuVvo']")
+  end
+
+ 
 end
