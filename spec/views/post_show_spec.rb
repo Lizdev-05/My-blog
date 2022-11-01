@@ -1,32 +1,47 @@
-require 'rails_helper'
-
-RSpec.describe 'Render the post show page', type: :request do
-    before(:each) do
-        @user = User.create(name: 'Tom', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Teacher from Mexico.',
-                            posts_counter: 0)
-        
-        @first_post = Post.create(title: 'First post', content: 'This is the first post.', user_id: @user.id, likes_counter: 0, comments_counter: 0)
-
-        5times do
-            Comment.create(content: 'This is a comment', user_id: @user.id, post_id: @first_post.id)
-        end
-
-        visit user_post_path(@first_post.author, @first_post)
+RSpec.describe 'Renders the post show page', type: :feature do
+    before :each do
+      @user = User.create(name: 'John Carson', photo: 'https://unsplash.com/photos/F_-0BxGuVvo',
+                          bio: 'I am an auditor with 30 years working experience.', posts_counter: 0)
+      @first_post = Post.create(title: 'Hello', text: 'This is my first post', comments_counter: 0, likes_counter: 0,
+                                author_id: @user.id)
+      @second_post = Post.create(title: 'welcome', text: 'This is my second post', comments_counter: 0, likes_counter: 0,
+                                 author_id: @user.id)
+      5.times do |_i|
+        Comment.create(text: 'Nice post!!', author_id: @user.id, post_id: @first_post.id)
+      end
+      visit user_post_path(@first_post.author, @first_post)
     end
-
-    scenario 'Displays the post title' do
-        expect(page).to have_content(@first_post.title)
+  
+    scenario 'displays the post title' do
+      expect(page).to have_content(@first_post.title)
     end
-
-    scenario 'Displays the post content' do
-        expect(page).to have_content(@first_post.content)
+  
+    scenario 'shows the person who wrote the post' do
+      expect(page).to have_content('John Carson')
     end
-
-    scenario 'Displays number of likes' do
-        expect(page).to have_content(@first_post.likes_counter)
+  
+    it 'can see the username of each commentor.' do
+      expect(page).to have_content('John Carson')
     end
-
-   scenario 'Displays the comments' do
-        expect(page).to have_content('Here are the comments')
-   end
+  
+    scenario 'disolays number of comments' do
+      expect(page).to have_content('Comments: 5')
     end
+  
+    scenario 'displays number of likes' do
+      expect(page).to have_content('Likes: 0')
+    end
+  
+    scenario 'displays the content of the post' do
+      expect(page).to have_content(@first_post.text)
+    end
+  
+    scenario 'can see the comments of each commentor.' do
+      expect(page).to have_content 'Nice post!!'
+      expect(page).to have_content 'Nice post!!'
+      expect(page).to have_content 'Nice post!!'
+      expect(page).to have_content 'Nice post!!'
+      expect(page).to have_content 'Nice post!!'
+    end
+  end
+  

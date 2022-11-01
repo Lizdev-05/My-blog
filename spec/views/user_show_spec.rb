@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'renders users Show Page', type: :feature do
   before :each do
     @user = User.create(name: 'Tom Ford', photo: 'https://unsplash.com/photos/F_-0BxGuVvo',
-                        bio: 'I am a fashion designer with 2 decades of experience', post_counter: 0)
+                        bio: 'I am a fashion designer with 2 decades of experience', posts_counter: 0)
 
     5.times do |i|
       Post.create(author: @user, title: "Post #{i}", text: 'This is my post')
