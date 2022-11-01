@@ -24,5 +24,8 @@ RSpec.describe 'Renders the post show page', type: :feature do
     expect(page).to have_content('Likes: 0')
   end
 
+  scenario 'displays the content of the post' do
+    expect(page).to have_content(@first_post.text)
+  end
 
 end
