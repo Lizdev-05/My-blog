@@ -88,9 +88,9 @@ RSpec.describe 'Posts', type: :feature do
       visit user_post_path(@user, @post)
     end
   
-  #   it "renders the post's title" do
-  #     expect(page).to have_content(@post.title)
-  #   end
+    it "renders the post's title" do
+      expect(page).to have_content(@post.title)
+    end
   
   #   it "renders the post's author" do
   #     expect(page).to have_content(@user.name)
