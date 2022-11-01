@@ -30,5 +30,11 @@ RSpec.describe 'renders users Show Page', type: :system, js:true do
     expect(page).to have_content(@user1)
   end
 
+ it 'shows number of user posts' do
+    expect(page).to have_content(@user.posts_counter)
+  end
+
+  
+
 
 end
