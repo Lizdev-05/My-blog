@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'renders users Show Page', type: :system, js:true do
+RSpec.describe 'renders users Show Page', type: :system, js: true do
   before(:each) do
     @user = User.create(name: 'Nicholas Emmanuel', photo: 'https://unsplash.com/photos/F_-0BxGuVvo',
                         bio: 'I am a software developer', posts_counter: 4)
@@ -30,11 +30,9 @@ RSpec.describe 'renders users Show Page', type: :system, js:true do
     expect(page).to have_content(@user1)
   end
 
- it 'shows number of user posts' do
+  it 'shows number of user posts' do
     expect(page).to have_content(@user.posts_counter)
   end
-
-  
 
   it 'it should render the view all user posts link' do
     expect(page).to have_link('See all posts')
