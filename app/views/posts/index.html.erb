@@ -2,10 +2,11 @@
 
  <%= render'users/user', user: @user %>
  
-<% @posts.each_with_index do |post, index| %>
-<p>Post #<%= index+1 %></p>
+<% @posts.each do |post| %>
+<%= link_to post.title, user_post_path(@user, post) %>
 <section >
   <ul><%= render 'posts/post', post: post %></ul>
 
 </section>
 <% end %>
+<%= will_paginate @posts, :container => false %>
