@@ -100,9 +100,9 @@ RSpec.describe 'Posts', type: :feature do
       expect(page).to have_content(@post.comments_counter)
     end
   
-  #   it 'renders likes count of the post' do
-  #     expect(page).to have_content(@post.likes_counter)
-  #   end
+    it 'renders likes count of the post' do
+      expect(page).to have_content(@post.likes_counter)
+    end
   
   #   it "renders the post's body" do
   #     expect(page).to have_content(@post.text)
