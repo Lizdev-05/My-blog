@@ -32,4 +32,11 @@ RSpec.describe 'Renders the post show page', type: :feature do
     expect(page).to have_content('Hello')
   end
 
+  scenario 'displays can see the username of each commentor' do
+    expect(page).to have_content(@user.name)
+  end
+
+  scenario 'I can see the comment each commentor left.' do
+    expect(page).to have_content('Nice post!!')
+  end
 end
