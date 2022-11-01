@@ -1,47 +1,53 @@
 require 'rails_helper'
 
-RSpec.describe 'renders users Show Page', type: :system, js: true do
-  before(:each) do
-    @user = User.create(name: 'Nicholas Emmanuel', photo: 'https://unsplash.com/photos/F_-0BxGuVvo',
-                        bio: 'I am a software developer', posts_counter: 4)
-
-    Post.create(author: @user, title: 'ahmed', text: 'anything on unit tests')
-    Post.create(author: @user, title: 'hamma', text: 'anything on unit tests')
-    Post.create(author: @user, title: 'asim', text: 'anything on unit tests')
-    @post = Post.create(author: @user, title: 'doe', text: 'anything on unit not tests')
-
-    visit user_path(id: @user.id)
+RSpec.describe 'Posts', type: :feature do
+describe 'show page' do
+  before(:example) do
+    @user = User.create(name: 'Tom', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Teacher from Mexico.',
+                        posts_counter: 0)
+    @post1 = Post.create(author: @user, title: 'Hello One', text: 'This is my first post', likes_counter: 0,
+                         comments_counter: 0)
+    @post2 = Post.create(author: @user, title: 'Hello Two', text: 'This is my second post', likes_counter: 0,
+                         comments_counter: 0)
+    @post3 = Post.create(author: @user, title: 'Hello Three', text: 'This is my third post', likes_counter: 0,
+                         comments_counter: 0)
+    visit user_path(@user)
   end
 
-  it 'should display user name and bio' do
-    expect(page).to have_content('Nicholas Emmanuel')
-    expect(page).to have_content('I am a software developer')
+  it "renders user's profile picture" do
+    find("img[src='#{@user.photo}']")
   end
 
-  it 'should render user profile photo' do
-    find("img[src='https://unsplash.com/photos/F_-0BxGuVvo']")
+  it "renders the user's username" do
+    expect(page).to have_content(@user.name)
   end
 
-  it 'should displays static text' do
-    expect(page).to have_content('posts')
-  end
-
-  it 'Shows the User name' do
-    expect(page).to have_content(@user1)
-  end
-
-  it 'shows number of user posts' do
+  it "renders the user's post count" do
     expect(page).to have_content(@user.posts_counter)
   end
 
-  it 'it should render the view all user posts link' do
-    expect(page).to have_link('See all posts')
+  it "renders the user's bio" do
+    expect(page).to have_content(@user.bio)
   end
 
-  it 'should render three recent posts' do
-    expect(page).to have_content(@user.return_recent_posts[0])
-    expect(page).to have_content(@user.return_recent_posts[1])
-    expect(page).to have_content(@user.return_recent_posts[2])
-    expect(page).to have_no_content(Post.where(author: @user))
+  it "renders 3 recent posts of the user" do
+    expect(page).to have_content(@post1.title)
+    expect(page).to have_content(@post2.title)
+    expect(page).to have_content(@post3.title)
   end
+
+  it 'renders a button to redirect to posts page' do
+    expect(page).to have_content('See all posts')
+  end
+
+  it "redirects to the user's post show page" do
+    click_link @post1.title
+    expect(page).to have_current_path(user_post_path(@user, @post1))
+  end
+
+  it "redirects to the user's posts index page" do
+    click_link 'See all posts'
+    expect(page).to have_current_path(user_posts_path(@user))
+  end
+end
 end
