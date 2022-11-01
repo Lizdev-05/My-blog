@@ -72,6 +72,4 @@ RSpec.describe 'Posts', type: :feature do
       expect(page).to have_current_path(user_post_path(@user, @post1))
     end
   end
-
- 
 end
