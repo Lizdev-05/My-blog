@@ -16,5 +16,9 @@ RSpec.describe 'Renders the post show page', type: :feature do
     expect(page).to have_content(@first_post.title)
   end
 
- 
+  scenario 'disolays number of comments' do
+    expect(page).to have_content('Comments: 5')
+  end
+
+
 end
