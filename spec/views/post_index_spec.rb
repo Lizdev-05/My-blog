@@ -104,9 +104,9 @@ RSpec.describe 'Posts', type: :feature do
       expect(page).to have_content(@post.likes_counter)
     end
   
-  #   it "renders the post's body" do
-  #     expect(page).to have_content(@post.text)
-  #   end
+    it "renders the post's body" do
+      expect(page).to have_content(@post.text)
+    end
   
   #   it 'renders the username of each commenter' do
   #     expect(page).to have_content(@user2.name)
