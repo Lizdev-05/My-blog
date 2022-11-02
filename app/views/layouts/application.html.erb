@@ -11,6 +11,10 @@
   </head>
 
    <body>
+   <%# Authentication with devise %>
+  <%= render 'partial/alerts' %>
+
+<%# Error display for submissions %>
   <% flash.each do |name, msg|%>
     <ul>
     <li><%= msg %></li>
