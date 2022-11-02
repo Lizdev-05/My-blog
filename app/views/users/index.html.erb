@@ -2,7 +2,7 @@
 
 <div>
 <% @users.each do |user|%>
-  <div> <%= render 'user', user: user %></div> 
-   
+  <div> <%= render 'user', user: user %></div>  
+  <%= link_to 'Create post', new_user_post_path(@user) %>
 <% end %> <br>
 </ul>
