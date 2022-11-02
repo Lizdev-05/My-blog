@@ -9,7 +9,8 @@
  </strong>
 <ul>
   <% post.return_recent_comments.each do |comment| %>
-  <li> <%= comment.text %></li>
+  <% username = User.find(comment.author_id).name %>
+  <li><%= username %>: <%= comment.text %></li>
  <% end %> 
   </ul>
 <a href="/users/<%= @user.id %>/posts/<%= post.id %>"> See more</a>
