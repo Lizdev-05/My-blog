@@ -6,6 +6,6 @@ Rails.application.routes.draw do
       resources :likes, only: [:create]
     end
   end
-
+    # devise_for :users, controllers: { confirmations: 'users/confirmations' }
     root to: 'users#index'
 end
