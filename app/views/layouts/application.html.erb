@@ -11,11 +11,17 @@
   </head>
 
    <body>
-  <% flash.each do |name, msg|%>
-    <ul>
-    <li><%= msg %></li>
-    </ul>
+   <%# Authentication with devise %>
+  <%= render 'partial/alerts' %>
+  <% if current_user %>
+  <%= current_user.name %>
+  <%= button_to 'Log out', destroy_user_session_path, method: :delete , data: { turbo: false } %>
   <% end %>
-    <%= yield %>
+<%# Error display for submissions %> 
+<div class='container'>
+<div class='row'>
+ <%= yield %>
+</div>
+</div>
   </body>
 </html>
