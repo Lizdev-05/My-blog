@@ -18,6 +18,10 @@
   <%= button_to 'Log out', destroy_user_session_path, method: :delete , data: { turbo: false } %>
   <% end %>
 <%# Error display for submissions %> 
-    <%= yield %>
+<div class='container'>
+<div class='row'>
+ <%= yield %>
+</div>
+</div>
   </body>
 </html>
