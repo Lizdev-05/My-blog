@@ -19,5 +19,17 @@
   </div>
 </div>
 
-<%= link_to 'Add comment', new_user_post_comment_path(@user, @post) %>
+<%= link_to 'Add comment', new_user_post_comment_path(@user, @post) %> <br>
+    <% if can? :destroy, @post %>
+       <%= button_to 'Delete Post',
+             user_post_path,
+              method: :delete,
+              data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  }%>
+     <% end %>
+
+
+
 
