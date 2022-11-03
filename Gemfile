@@ -85,6 +85,3 @@ gem 'cssbundling-rails'
 
 # Authorization
 gem 'cancancan'
-
-
-
