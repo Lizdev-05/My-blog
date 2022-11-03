@@ -28,6 +28,16 @@ class PostsController < ApplicationController
     @user = User.find(params[:user_id])
   end
 
+  def destroy
+    @post = Post.find(params[:id])
+    @user = User.find(@post.author_id)
+    @user.posts_counter -= 1
+    @post.destroy
+    @user.save
+    flash[:notice] = 'Post was successfully deleted'
+    redirect_to user_posts_path(@user)
+  end
+
   private
 
   def set_post
@@ -39,6 +49,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :text)
+    params.require(:post).permit(:title, :text, :likes_counter, :comments_counter)
   end
 end
