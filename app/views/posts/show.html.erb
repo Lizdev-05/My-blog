@@ -10,6 +10,7 @@
   <li><%= username %>: <%= comment.text %></li>
   
     <% if can? :destroy, Comment %>
+      <%= button_to 'delete comment', user_post_comment_path(comment.author, comment.post,comment), method: :delete %>
     <% end %>
   %>
 
