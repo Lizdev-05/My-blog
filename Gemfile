@@ -82,3 +82,9 @@ gem 'devise'
 
 # Bootstrap
 gem 'cssbundling-rails'
+
+# Authorization
+gem 'cancancan'
+
+
+
