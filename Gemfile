@@ -85,3 +85,6 @@ gem 'cssbundling-rails'
 
 # Authorization
 gem 'cancancan'
+
+# Api
+gem 'jwt'
