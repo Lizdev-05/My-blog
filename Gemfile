@@ -61,6 +61,7 @@ group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem 'bullet'
   gem 'database_cleaner'
+  gem 'rswag-specs'
   gem 'web-console'
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
@@ -88,3 +89,6 @@ gem 'cancancan'
 
 # Api
 gem 'jwt'
+
+# Api documentation
+gem 'rswag'
